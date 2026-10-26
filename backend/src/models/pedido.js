@@ -38,6 +38,27 @@ const Pedido = sequelize.define(
             type: DataTypes.INTEGER,
             allowNull: true,
         },
+        // Pagamento simulado para desenvolvimento; não representa uma transação real.
+        pagamento_status: {
+            type: DataTypes.STRING(20),
+            allowNull: false,
+            defaultValue: "pendente",
+            validate: { isIn: [["pendente", "aprovado", "recusado", "estornado"]] },
+        },
+        pagamento_metodo: {
+            type: DataTypes.STRING(30),
+            allowNull: true,
+            validate: { isIn: [["dinheiro", "pix", "cartao_credito", "cartao_debito"]] },
+        },
+        pagamento_fake_id: {
+            type: DataTypes.STRING(40),
+            allowNull: true,
+            unique: true,
+        },
+        pago_em: {
+            type: DataTypes.DATE,
+            allowNull: true,
+        },
     },
     {
         tableName: "pedidos",

@@ -24,6 +24,8 @@ const permissoes = [
   ["produto.gerenciar", "Gerenciar produtos"],
   ["usuario.gerenciar", "Gerenciar usuários e papéis"],
   ["impressao.gerenciar", "Gerenciar impressões"],
+  ["pagamento.simular", "Simular pagamentos no ambiente de desenvolvimento"],
+  ["comprovante.visualizar", "Visualizar e imprimir comprovantes"],
 ];
 
 const permissoesPorPapel = {
@@ -38,6 +40,8 @@ const permissoesPorPapel = {
     "pedido.atualizar",
     "pedido.cancelar",
     "historico.visualizar",
+    "pagamento.simular",
+    "comprovante.visualizar",
   ],
 
   cozinheiro: [
@@ -54,6 +58,8 @@ const permissoesPorPapel = {
     "historico.visualizar",
     "produto.gerenciar",
     "impressao.gerenciar",
+    "pagamento.simular",
+    "comprovante.visualizar",
   ],
 
   admin: permissoes.map(([nome]) => nome),

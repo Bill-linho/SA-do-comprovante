@@ -8,6 +8,7 @@ import "./src/models/index.js";
 import authRoutes from "./src/routes/auth.Routes.js";
 import pedidoRoutes from "./src/routes/pedidos.Routes.js";
 import historicoRoutes from "./src/routes/historico.Route.js";
+import comprovanteRoutes from "./src/routes/comprovantes.Routes.js";
 
 import { limiteGlobal } from "./src/middlewares/rateLimit.js";
 import { executarRbacSeeder } from "./src/seeders/rbacSeeder.js";
@@ -32,6 +33,7 @@ app.use(limiteGlobal);
 app.use("/auth", authRoutes);
 app.use("/pedidos", pedidoRoutes);
 app.use("/pedidos", historicoRoutes);
+app.use("/pedidos", comprovanteRoutes);
 
 async function iniciarServidor() {
   try {
