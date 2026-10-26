@@ -14,14 +14,8 @@ import { executarRbacSeeder } from "./src/seeders/rbacSeeder.js";
 
 const app = express();
 
-// Se estiver atrás de um proxy confiável, como no Render,
-// configure trust proxy conforme a infraestrutura.
-// Não habilite indiscriminadamente em qualquer ambiente.
-
-// Cabeçalhos HTTP de segurança.
 app.use(helmet());
 
-// Permite requisições do frontend autorizado.
 app.use(
   cors({
     origin: process.env.FRONTEND_URL,
@@ -30,13 +24,11 @@ app.use(
   })
 );
 
-// Limita o tamanho do JSON recebido.
 app.use(express.json({ limit: "10kb" }));
 
-// Limite geral da API.
+
 app.use(limiteGlobal);
 
-// Rotas.
 app.use("/auth", authRoutes);
 app.use("/pedidos", pedidoRoutes);
 app.use("/pedidos", historicoRoutes);
@@ -46,8 +38,6 @@ async function iniciarServidor() {
     await sequelize.authenticate();
     console.log("Banco de dados conectado!");
 
-    // Adequado para um ambiente de desenvolvimento inicial.
-    // Em produção, prefira migrations.
     await sequelize.sync();
 
     await executarRbacSeeder();
