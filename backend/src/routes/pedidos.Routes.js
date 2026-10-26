@@ -5,6 +5,6 @@ import { atualizarStatus } from "../controllers/pedidoController.js";
 
 const router = Router();
 
-router.patch("/:id/status", autenticar, autorizar("pedido.atualizar"), atualizarStatus );
+router.patch("/:id/status", autenticar, autorizar([ "cozinha.atualizar_status", "pedido.atualizar",]), atualizarStatus );
 
 export default router;

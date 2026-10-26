@@ -8,6 +8,7 @@ const papeis = [
   ["cliente", "Realiza e consulta os próprios pedidos"],
   ["atendente", "Registra e acompanha pedidos"],
   ["cozinheiro", "Prepara os pedidos"],
+  ["gerente", "Gerencia pedidos e operações do restaurante"],
   ["admin", "Administra o sistema"],
 ];
 
@@ -42,6 +43,17 @@ const permissoesPorPapel = {
   cozinheiro: [
     "cozinha.visualizar",
     "cozinha.atualizar_status",
+  ],
+
+  gerente: [
+    "pedido.visualizar_todos",
+    "pedido.atualizar",
+    "pedido.cancelar",
+    "cozinha.visualizar",
+    "cozinha.atualizar_status",
+    "historico.visualizar",
+    "produto.gerenciar",
+    "impressao.gerenciar",
   ],
 
   admin: permissoes.map(([nome]) => nome),

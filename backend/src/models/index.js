@@ -5,6 +5,9 @@ import UsuarioPapel from "./usuarioPapel.js";
 import PapelPermissao from "./papelPermissao.js";
 import Pedido from "./pedido.js";
 import HistoricoPedido from "./historicoPedido.js";
+import Mesa from "./mesa.js";
+import Prato from "./prato.js";
+import ItemPedido from "./itemPedido.js";
 
 // Usuários <-> Papéis
 Usuario.belongsToMany(Papel, {
@@ -47,6 +50,39 @@ HistoricoPedido.belongsTo(Pedido, {
   as: "pedido",
 });
 
+// Mesa e pedidos
+Mesa.hasMany(Pedido, {
+  foreignKey: "mesa_id",
+  as: "pedidos",
+});
+
+Pedido.belongsTo(Mesa, {
+  foreignKey: "mesa_id",
+  as: "mesa",
+});
+
+// Pedido e itens
+Pedido.hasMany(ItemPedido, {
+  foreignKey: "pedido_id",
+  as: "itens",
+});
+
+ItemPedido.belongsTo(Pedido, {
+  foreignKey: "pedido_id",
+  as: "pedido",
+});
+
+// Prato e itens
+Prato.hasMany(ItemPedido, {
+  foreignKey: "prato_id",
+  as: "itensPedido",
+});
+
+ItemPedido.belongsTo(Prato, {
+  foreignKey: "prato_id",
+  as: "prato",
+});
+
 // Usuário <-> Histórico
 Usuario.hasMany(HistoricoPedido, {
   foreignKey: "usuario_id",
@@ -87,4 +123,7 @@ export {
   PapelPermissao,
   Pedido,
   HistoricoPedido,
+  Mesa,
+  Prato,
+  ItemPedido,
 };
