@@ -13,8 +13,6 @@ export default function autenticar(req, res, next) {
 
   try {
     const dados = jwt.verify(token, process.env.JWT_SECRET);
-
-    // O token deve conter o ID do usuário.
     req.usuario = {
       id: dados.id ?? dados.usuarioId,
     };
