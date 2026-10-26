@@ -1,12 +1,25 @@
-import Home from "./pages/home"
+import { useState } from "react";
 
-function App() {
+import Home from "./pages/home";
+import Login from "./pages/login";
+import Cadastro from "./pages/cadastro";
+
+export default function App() {
+  const [tela, setTela] = useState("login");
 
   return (
     <>
-    <Home/>
-    </>
-  )
-}
+      {tela === "login" && (
+        <Login onNavigate={setTela} />
+      )}
 
-export default App
+      {tela === "cadastro" && (
+        <Cadastro onNavigate={setTela} />
+      )}
+
+      {tela === "home" && (
+        <Home onNavigate={setTela} />
+      )}
+    </>
+  );
+}
