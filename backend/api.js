@@ -2,15 +2,15 @@ import express from "express";
 import helmet from "helmet";
 import cors from "cors";
 
-import sequelize from "./config/database.js";
-import "./models/index.js";
+import sequelize from "./src/config/database.js";
+import "./src/models/index.js";
 
-import authRoutes from "./routes/authRoutes.js";
-import pedidoRoutes from "./routes/pedidoRoutes.js";
-import historicoRoutes from "./routes/historicoRoutes.js";
+import authRoutes from "./src/routes/auth.Routes.js";
+import pedidoRoutes from "./src/routes/pedidos.Routes.js";
+import historicoRoutes from "./src/routes/historico.Route.js";
 
-import { limiteGlobal } from "./middlewares/rateLimit.js";
-import { executarRbacSeeder } from "./seeders/rbacSeeder.js";
+import { limiteGlobal } from "./src/middlewares/rateLimit.js";
+import { executarRbacSeeder } from "./src/seeders/rbacSeeder.js";
 
 const app = express();
 

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { cadastrar, login } from "../controllers/authController.js";
+import { cadastrar, login } from "../controllers/autheController.js";
 import { limiteLogin } from "../middlewares/rateLimit.js";
 
 const router = Router();

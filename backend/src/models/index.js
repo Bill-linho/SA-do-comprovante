@@ -1,4 +1,4 @@
-import Usuario from "./Usuario.js";
+import Usuario from "./cliente.js";
 import Papel from "./papel.js";
 import Permissao from "./permissao.js";
 import UsuarioPapel from "./usuarioPapel.js";

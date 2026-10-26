@@ -1,6 +1,6 @@
 import sequelize from "../config/database.js";
 import { Pedido } from "../models/index.js";
-import { registrarHistorico } from "../services/historicoService.js";
+import { registrarHistorico } from "../services/historicoServico.js";
 
 const statusPermitidos = [
   "aberto",
