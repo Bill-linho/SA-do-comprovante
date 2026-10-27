@@ -9,7 +9,6 @@ const papeis = [
   ["atendente", "Registra e acompanha pedidos"],
   ["cozinheiro", "Prepara os pedidos"],
   ["gerente", "Gerencia pedidos e operações do restaurante"],
-  ["admin", "Administra o sistema"],
 ];
 
 const permissoes = [
@@ -61,8 +60,6 @@ const permissoesPorPapel = {
     "pagamento.simular",
     "comprovante.visualizar",
   ],
-
-  admin: permissoes.map(([nome]) => nome),
 };
 
 export async function executarRbacSeeder() {

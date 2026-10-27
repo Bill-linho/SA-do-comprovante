@@ -2,10 +2,7 @@ import { Router } from "express";
 import { cadastrar, login } from "../controllers/autheController.js";
 import { limiteLogin } from "../middlewares/rateLimit.js";
 import { validar } from "../middlewares/validador.js";
-import {
-  cadastroSchema,
-  loginSchema,
-} from "../schemas/authSchems.js";
+import { cadastroSchema, loginSchema,} from "../schemas/authSchems.js";
 
 const router = Router();
 

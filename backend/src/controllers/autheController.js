@@ -113,3 +113,13 @@ export async function login(req, res) {
     });
   }
 }
+
+export async function pegarUser(req, res) {
+  try {
+    const resultado = await Usuario.findAll()
+
+    return res.status(200).json({ mensagem: "Usuarios encontrados", resultado})
+  } catch (error) {
+    return res.status(500).json({ mensagem: "Erro ao encontrar usuarios"})   
+  }
+}

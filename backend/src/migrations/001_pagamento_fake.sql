@@ -16,4 +16,4 @@ ALTER TABLE pedidos ADD CONSTRAINT pedidos_pagamento_status_check
 
 ALTER TABLE pedidos DROP CONSTRAINT IF EXISTS pedidos_pagamento_metodo_check;
 ALTER TABLE pedidos ADD CONSTRAINT pedidos_pagamento_metodo_check
-  CHECK (pagamento_metodo IS NULL OR pagamento_metodo IN ('dinheiro', 'pix', 'cartao_credito', 'cartao_debito'));
+  CHECK (pagamento_metodo IS NULL OR pagamento_metodo IN ('dinheiro', 'pix', 'cartao_credito', 'cartao_debito')); 
