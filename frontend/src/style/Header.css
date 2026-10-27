@@ -1,0 +1,8 @@
+header{
+margin: 0;
+border: 0;
+}
+.header-buttons{
+    display: flex;
+    justify-content: space-between;
+}
