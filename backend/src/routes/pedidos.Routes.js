@@ -1,15 +1,7 @@
 import { Router } from "express";
 import autenticar from "../middlewares/autenticador.js";
 import autorizar from "../middlewares/autorizador.js";
-import {
-  criarPedido,
-  listarMeusPedidos,
-  listarTodosPedidos,
-  listarPedidosCozinha,
-  buscarPedido,
-  atualizarStatus,
-  cancelarMeuPedido,
-} from "../controllers/pedidoController.js";
+import { criarPedido, listarMeusPedidos, listarTodosPedidos, listarPedidosCozinha, buscarPedido, atualizarStatus, cancelarMeuPedido,} from "../controllers/pedidoController.js";
 
 const router = Router();
 

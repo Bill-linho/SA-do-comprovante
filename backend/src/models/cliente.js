@@ -15,12 +15,12 @@ const Usuario = sequelize.define(
         },
         cpf: {
             type: DataTypes.STRING(11),
-            allowNull: true,
+            allowNull: false,
             unique: true,
         },
         telefone: {
             type: DataTypes.STRING(20),
-            allowNull: true,
+            allowNull: false,
         },
         email: {
             type: DataTypes.STRING(150),

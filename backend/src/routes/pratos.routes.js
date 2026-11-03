@@ -7,30 +7,13 @@ import { listarPratos, buscarPrato, cadastrarPrato, atualizarPrato, desativarPra
 
 const router = Router();
 
-// Rotas públicas
 router.get("/", listarPratos);
 router.get("/:id", buscarPrato);
 
-// Rotas exclusivas do gerente
-router.post(
-  "/",
-  autenticar,
-  autorizar(["produto.gerenciar"]),
-  cadastrarPrato
-);
+router.post("/", autenticar, autorizar(["produto.gerenciar"]), cadastrarPrato);
 
-router.put(
-  "/:id",
-  autenticar,
-  autorizar(["produto.gerenciar"]),
-  atualizarPrato
-);
+router.put( "/:id",autenticar,autorizar(["produto.gerenciar"]),atualizarPrato);
 
-router.delete(
-  "/:id",
-  autenticar,
-  autorizar(["produto.gerenciar"]),
-  desativarPrato
-);
+router.delete( "/:id", autenticar, autorizar(["produto.gerenciar"]), desativarPrato);
 
 export default router;
