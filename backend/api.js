@@ -5,6 +5,7 @@ import cors from "cors";
 import sequelize from "./src/config/database.js";
 import "./src/models/index.js";
 
+import pratoRoutes from "./src/routes/pratos.routes.js";
 import authRoutes from "./src/routes/auth.Routes.js";
 import pedidoRoutes from "./src/routes/pedidos.Routes.js";
 import historicoRoutes from "./src/routes/historico.Route.js";
@@ -31,6 +32,7 @@ app.use(express.json({ limit: "10kb" }));
 
 app.use(limiteGlobal);
 
+app.use("/pratos", pratoRoutes);
 app.use("/auth", authRoutes);
 app.use("/pedidos", pedidoRoutes);
 app.use("/gerencia", gerencia)
