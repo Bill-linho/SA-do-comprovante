@@ -44,7 +44,7 @@ export async function buscarPrato(req, res) {
 // CADASTRAR PRATO
 export async function cadastrarPrato(req, res) {
   try {
-    const { nome, descricao, preco } = req.body;
+    const { nome, descricao, categoria, preco } = req.body;
 
     if (!nome || preco === undefined) {
       return res.status(400).json({
@@ -66,6 +66,7 @@ export async function cadastrarPrato(req, res) {
     const prato = await Prato.create({
       nome: nome.trim(),
       descricao,
+      categoria: typeof categoria === "string" && categoria.trim() ? categoria.trim() : "Pratos",
       preco: Number(preco),
       disponivel: true,
     });
@@ -87,7 +88,7 @@ export async function cadastrarPrato(req, res) {
 export async function atualizarPrato(req, res) {
   try {
     const { id } = req.params;
-    const { nome, descricao, preco, disponivel } = req.body;
+    const { nome, descricao, categoria, preco, disponivel } = req.body;
 
     const prato = await Prato.findByPk(id);
 
@@ -121,6 +122,7 @@ export async function atualizarPrato(req, res) {
     await prato.update({
       ...(nome !== undefined && { nome: nome.trim() }),
       ...(descricao !== undefined && { descricao }),
+      ...(categoria !== undefined && typeof categoria === "string" && categoria.trim() && { categoria: categoria.trim() }),
       ...(preco !== undefined && { preco: Number(preco) }),
       ...(disponivel !== undefined && { disponivel }),
     });

@@ -17,6 +17,11 @@ const Prato = sequelize.define(
       type: DataTypes.TEXT,
       allowNull: true,
     },
+    categoria: {
+      type: DataTypes.STRING(60),
+      allowNull: false,
+      defaultValue: "Pratos",
+    },
     preco: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,

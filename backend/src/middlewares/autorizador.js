@@ -26,8 +26,8 @@ export default function autorizar(permissoesNecessarias) {
         });
       }
 
-      const permissoesUsuario = usuario.papeis.flatMap((papel) =>
-        papel.permissoes.map((permissao) => permissao.nome)
+      const permissoesUsuario = (usuario.papeis ?? []).flatMap((papel) =>
+        (papel.permissoes ?? []).map((permissao) => permissao.nome)
       );
 
       const necessarias = Array.isArray(permissoesNecessarias)

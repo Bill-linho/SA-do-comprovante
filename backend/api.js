@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express from "express";
 import helmet from "helmet";
 import cors from "cors";
@@ -10,7 +11,7 @@ import authRoutes from "./src/routes/auth.Routes.js";
 import pedidoRoutes from "./src/routes/pedidos.Routes.js";
 import historicoRoutes from "./src/routes/historico.Route.js";
 import comprovanteRoutes from "./src/routes/comprovantes.Routes.js";
-import gerencia from "./src/routes/gerente.routes.js"
+import gerencia from "./src/routes/gerente.routes.js";
 
 import { limiteGlobal } from "./src/middlewares/rateLimit.js";
 import { executarRbacSeeder } from "./src/seeders/rbacSeeder.js";
@@ -21,7 +22,7 @@ app.use(helmet());
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: process.env.FRONTEND_URL || "http://localhost:5173",
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
@@ -35,7 +36,7 @@ app.use(limiteGlobal);
 app.use("/pratos", pratoRoutes);
 app.use("/auth", authRoutes);
 app.use("/pedidos", pedidoRoutes);
-app.use("/gerencia", gerencia)
+app.use("/gerencia", gerencia);
 app.use("/pedidos", historicoRoutes);
 app.use("/pedidos", comprovanteRoutes);
 
