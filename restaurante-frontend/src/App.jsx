@@ -11,7 +11,6 @@ import {
   Utensils,
   Clock3,
   MapPin,
-  Instagram,
   Phone,
   CreditCard,
   LogIn,
