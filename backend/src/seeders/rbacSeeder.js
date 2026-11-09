@@ -2,6 +2,8 @@ import {
   Papel,
   Permissao,
   PapelPermissao,
+  Usuario,
+  UsuarioPapel,
 } from "../models/index.js";
 
 const papeis = [
@@ -9,6 +11,7 @@ const papeis = [
   ["atendente", "Registra e acompanha pedidos"],
   ["cozinheiro", "Prepara os pedidos"],
   ["gerente", "Gerencia pedidos e operações do restaurante"],
+  ["admin", "Acesso administrativo do sistema"],
 ];
 
 const permissoes = [
@@ -31,6 +34,8 @@ const permissoesPorPapel = {
   cliente: [
     "pedido.criar",
     "pedido.visualizar_proprio",
+    "pagamento.simular",
+    "comprovante.visualizar",
   ],
 
   atendente: [
@@ -56,10 +61,12 @@ const permissoesPorPapel = {
     "cozinha.atualizar_status",
     "historico.visualizar",
     "produto.gerenciar",
+    "usuario.gerenciar",
     "impressao.gerenciar",
     "pagamento.simular",
     "comprovante.visualizar",
   ],
+  admin: permissoes.map(([nome]) => nome),
 };
 
 export async function executarRbacSeeder() {
@@ -104,5 +111,20 @@ export async function executarRbacSeeder() {
     }
   }
 
-  console.log("Papéis e permissões configurados!");
+  // Contas antigas sem papel recebem o papel básico de cliente.
+  const usuarios = await Usuario.findAll({ attributes: ["id"] });
+  for (const usuario of usuarios) {
+    const vinculo = await UsuarioPapel.findOne({
+      where: { usuario_id: usuario.id },
+    });
+
+    if (!vinculo) {
+      await UsuarioPapel.create({
+        usuario_id: usuario.id,
+        papel_id: papeisCriados.cliente.id,
+      });
+    }
+  }
+
+  console.log("Papéis, permissões e papéis padrão configurados!");
 }

@@ -35,6 +35,15 @@ export async function simularPagamento(req, res) {
       await transaction.rollback();
       return res.status(404).json({ mensagem: "Pedido não encontrado." });
     }
+    const papeis = await papeisDoUsuario(req.usuario.id);
+    const equipe = papeis.some((papel) => papeisEquipe.includes(papel));
+    const donoDoPedido = Number(pedido.cliente_id) === Number(req.usuario.id);
+
+    if (!equipe && !donoDoPedido) {
+      await transaction.rollback();
+      return res.status(403).json({ mensagem: "Você só pode pagar seus próprios pedidos." });
+    }
+
     if (pedido.status === "cancelado") {
       await transaction.rollback();
       return res.status(409).json({ mensagem: "Não é possível pagar um pedido cancelado." });

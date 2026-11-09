@@ -1,11 +1,11 @@
 import { Router } from "express";
-import autenticar from "../middlewares/autenticador.js"
-import autorizar from "../middlewares/autorizador.js"
-import { limiteGlobal } from "../middlewares/rateLimit.js"
-import { pegarUser } from "../controllers/autheController.js";
+import autenticar from "../middlewares/autenticador.js";
+import autorizar from "../middlewares/autorizador.js";
+import { pegarUser, atribuirPapel } from "../controllers/autheController.js";
 
-const router = Router()
+const router = Router();
 
-router.get("/Users", limiteGlobal, autenticar, autorizar("usuario.gerenciar"), pegarUser)
+router.get("/usuarios", autenticar, autorizar("usuario.gerenciar"), pegarUser);
+router.patch("/usuarios/:id/papel", autenticar, autorizar("usuario.gerenciar"), atribuirPapel);
 
-export default router
+export default router;
