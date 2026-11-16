@@ -1,0 +1,36 @@
+/* Estilos do painel administrativo e gerenciamento de funcionários */
+/* Painel administrativo */
+.admin-page { display: grid; gap: 4px; }
+.admin-heading h1 { margin: 4px 0; }
+.admin-tabs { display: flex; gap: 18px; margin-top: 20px; flex-wrap: wrap; }
+.admin-tabs a { color: #665b50; text-decoration: none; padding: 9px 13px; border-radius: 9px; background: #f5f1eb; }
+.admin-tabs a.active { background: #a34e2d; color: #fff; }
+.admin-panel h2 { margin-top: 0; }
+.admin-form, .category-form { background: #faf8f5; border: 1px solid #e9e4dc; border-radius: 12px; padding: 18px; margin: 20px 0; }
+.admin-form h3, .category-form h3 { margin-top: 0; }
+.admin-form textarea { width: 100%; resize: vertical; border: 1px solid #d9d2c8; border-radius: 8px; padding: 11px; font: inherit; }
+.admin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.check-label { display: flex; align-items: center; gap: 9px; }
+.check-label input { min-width: auto; }
+.category-form { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 12px; }
+.category-form h3 { grid-column: 1 / -1; margin-bottom: 0; }
+.admin-list { display: grid; }
+.admin-list-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 14px 0; border-top: 1px solid #eee8df; }
+.admin-list-row p { margin: 4px 0; color: #77716a; }
+.admin-list-row small { color: #77716a; }
+.admin-product-info { display: flex; align-items: center; gap: 12px; }
+.admin-product-info img, .admin-thumb { width: 58px; height: 58px; object-fit: cover; border-radius: 9px; }
+.admin-thumb { display: grid; place-items: center; background: #eee8df; font-size: 26px; }
+.admin-list-row .actions { justify-content: flex-end; }
+.staff-actions { display: flex; gap: 9px; align-items: center; }
+.staff-actions select { min-width: 145px; }
+.category-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.category-chips span { padding: 7px 11px; background: #f1e8df; border-radius: 99px; font-size: 13px; }
+.category-chips .inactive-chip { opacity: .55; text-decoration: line-through; }
+@media(max-width:700px) {
+  .admin-grid, .category-form { grid-template-columns: 1fr; }
+  .category-form h3 { grid-column: auto; }
+  .admin-list-row { align-items: flex-start; flex-direction: column; }
+  .staff-actions { width: 100%; }
+  .staff-actions select { flex: 1; }
+}

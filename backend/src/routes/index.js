@@ -1,0 +1,20 @@
+import { Router } from 'express';
+import authRoutes from './auth.routes.js';
+import catalogRoutes from './catalog.routes.js';
+import tableRoutes from './table.routes.js';
+import reservationRoutes from './reservation.routes.js';
+import orderRoutes from './order.routes.js';
+import staffRoutes from './staff.routes.js';
+import { authenticate } from '../middlewares/auth.js';
+import { getReceipt } from '../controllers/orderController.js';
+
+const router = Router();
+router.get('/health', (req, res) => res.json({ status: 'ok', service: 'restaurante-api' }));
+router.use('/auth', authRoutes);
+router.use('/', catalogRoutes);
+router.use('/tables', tableRoutes);
+router.use('/reservations', reservationRoutes);
+router.use('/orders', orderRoutes);
+router.get('/receipts/:id', authenticate, getReceipt);
+router.use('/staff', staffRoutes);
+export default router;

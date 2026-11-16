@@ -1,0 +1,7 @@
+/* Arquivo principal: importa os estilos por responsabilidade. */
+@import './styles/base.css';
+@import './styles/admin.css';
+@import './styles/pwa.css';
+@import './styles/kitchen.css';
+
+@import './styles/settings.css';

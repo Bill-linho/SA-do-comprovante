@@ -1,0 +1,54 @@
+/* Instalação PWA compacta na barra de navegação */
+.install-nav-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 11px;
+  border-radius: 8px;
+  white-space: nowrap;
+  font-size: .88rem;
+}
+.install-nav-button span { font-size: 1rem; }
+
+/* Notificações flutuantes no rodapé da tela */
+.notice-toast {
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  bottom: max(22px, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  width: min( min(560px, calc(100vw - 28px)), 560px );
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin: 0;
+  padding: 13px 14px 13px 18px;
+  color: #2b241c;
+  background: #fff0dc;
+  border: 1px solid #f0d6ae;
+  border-radius: 12px;
+  box-shadow: 0 12px 35px rgba(0,0,0,.2);
+  cursor: pointer;
+  animation: notice-enter .2s ease-out;
+}
+.notice-close {
+  flex: 0 0 auto;
+  padding: 2px 8px;
+  color: inherit;
+  background: transparent;
+  font-size: 1.35rem;
+}
+:root[data-theme="dark"] .notice-toast {
+  color: #fff0d6;
+  background: #49371f;
+  border-color: #76582d;
+}
+@keyframes notice-enter {
+  from { opacity: 0; transform: translate(-50%, 12px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+@media (max-width: 700px) {
+  .install-nav-button { padding: 7px 9px; }
+  .notice-toast { bottom: max(14px, env(safe-area-inset-bottom)); }
+}

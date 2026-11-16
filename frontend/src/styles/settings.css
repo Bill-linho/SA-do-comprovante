@@ -1,0 +1,127 @@
+/* Configurações de aparência, tipografia e acessibilidade */
+:root { --app-font-scale: 1; }
+:root[data-font-size="small"] { --app-font-scale: .92; }
+:root[data-font-size="medium"] { --app-font-scale: 1; }
+:root[data-font-size="large"] { --app-font-scale: 1.12; }
+:root[data-font-size="xlarge"] { --app-font-scale: 1.25; }
+html { font-size: calc(16px * var(--app-font-scale)); }
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --app-bg: #171614; --app-surface: #24221f; --app-surface-soft: #302d29;
+  --app-text: #f2eee8; --app-muted: #b8afa4; --app-border: #49433c;
+  --app-input: #302d29; --app-link: #e69a75;
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --app-bg: #f7f5f0; --app-surface: #fff; --app-surface-soft: #faf8f5;
+  --app-text: #24231f; --app-muted: #77716a; --app-border: #e9e4dc;
+  --app-input: #fff; --app-link: #a34e2d;
+}
+:root[data-theme="dark"] body,
+:root[data-theme="dark"] .app { background: var(--app-bg); color: var(--app-text); }
+:root[data-theme="dark"] header,
+:root[data-theme="dark"] .panel,
+:root[data-theme="dark"] .product,
+:root[data-theme="dark"] .receipt { background: var(--app-surface); color: var(--app-text); border-color: var(--app-border); }
+:root[data-theme="dark"] .brand,
+:root[data-theme="dark"] nav a,
+:root[data-theme="dark"] header a { color: var(--app-text); }
+:root[data-theme="dark"] .muted,
+:root[data-theme="dark"] .product-body p,
+:root[data-theme="dark"] .order-row p,
+:root[data-theme="dark"] .admin-list-row p,
+:root[data-theme="dark"] .admin-list-row small { color: var(--app-muted); }
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] select,
+:root[data-theme="dark"] textarea,
+:root[data-theme="dark"] .admin-form,
+:root[data-theme="dark"] .category-form { background: var(--app-input); color: var(--app-text); border-color: var(--app-border); }
+:root[data-theme="dark"] .secondary,
+:root[data-theme="dark"] .admin-tabs a,
+:root[data-theme="dark"] .category-chips span { background: var(--app-surface-soft); color: var(--app-text); }
+:root[data-theme="dark"] .placeholder,
+:root[data-theme="dark"] .admin-thumb { background: var(--app-surface-soft); }
+:root[data-theme="dark"] .notice { background: #49371f; color: #fff0d6; border-color: #76582d; }
+:root[data-theme="dark"] footer { color: var(--app-muted); }
+
+:root[data-contrast="high"] { --app-border: #777; }
+:root[data-contrast="high"] body { font-weight: 550; }
+:root[data-contrast="high"] a,
+:root[data-contrast="high"] button,
+:root[data-contrast="high"] input,
+:root[data-contrast="high"] select { outline-offset: 2px; }
+:root[data-contrast="high"] button:focus-visible,
+:root[data-contrast="high"] a:focus-visible,
+:root[data-contrast="high"] input:focus-visible,
+:root[data-contrast="high"] select:focus-visible { outline: 3px solid currentColor; }
+
+.settings-page { max-width: 760px; margin: 0 auto; }
+.settings-heading { margin-bottom: 22px; }
+.settings-heading h1 { margin: 5px 0; font-size: 2rem; }
+.settings-card { display: grid; gap: 12px; margin: 16px 0; }
+.settings-title { display: flex; align-items: center; gap: 13px; margin-bottom: 4px; }
+.settings-title h2 { margin: 0 0 4px; font-size: 1.15rem; }
+.settings-title p { margin: 0; }
+.settings-icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px; background: #f1e8df; color: #8e4328; font-weight: 800; }
+:root[data-theme="dark"] .settings-icon { background: var(--app-surface-soft); color: #f0b08f; }
+.settings-help { margin: 0; color: var(--app-muted, #77716a); font-size: .9rem; }
+.settings-preview { padding: 12px; border: 1px dashed var(--app-border, #ddd); border-radius: 9px; margin: 0; }
+.settings-switch { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.settings-switch span { display: grid; gap: 4px; }
+.settings-switch small { color: var(--app-muted, #77716a); font-weight: 400; }
+.settings-switch input { width: 20px; height: 20px; }
+.settings-actions { display: flex; justify-content: flex-end; margin: 18px 0 32px; }
+@media (max-width: 700px) { .settings-page { width: 100%; } .settings-card { padding: 18px; } }
+
+
+/* Cobertura global do tema: evita faixas claras fora dos cards */
+:root[data-theme="dark"], :root[data-theme="dark"] body,
+:root[data-theme="dark"] #root, :root[data-theme="dark"] .app {
+  background-color: var(--app-bg) !important;
+  color: var(--app-text);
+}
+:root[data-theme="dark"] main { background: transparent; }
+:root[data-theme="dark"] .panel,
+:root[data-theme="dark"] .product,
+:root[data-theme="dark"] .receipt,
+:root[data-theme="dark"] .settings-preview,
+:root[data-theme="dark"] .admin-card,
+:root[data-theme="dark"] .kitchen-card,
+:root[data-theme="dark"] .order-card {
+  background-color: var(--app-surface);
+  color: var(--app-text);
+  border-color: var(--app-border);
+}
+:root[data-theme="dark"] .product-body,
+:root[data-theme="dark"] .product-body h3,
+:root[data-theme="dark"] .settings-page,
+:root[data-theme="dark"] .settings-heading,
+:root[data-theme="dark"] .section-head { color: var(--app-text); }
+:root[data-theme="light"] html, :root[data-theme="light"] body,
+:root[data-theme="light"] #root, :root[data-theme="light"] .app {
+  background-color: var(--app-bg);
+}
+
+:root[data-theme="dark"] .admin-form,
+:root[data-theme="dark"] .category-form,
+:root[data-theme="dark"] .kitchen-info,
+:root[data-theme="dark"] .kitchen-order,
+:root[data-theme="dark"] .kitchen-empty,
+:root[data-theme="dark"] .kitchen-notes,
+:root[data-theme="dark"] .settings-icon {
+  background-color: var(--app-surface-soft);
+  color: var(--app-text);
+  border-color: var(--app-border);
+}
+:root[data-theme="dark"] .kitchen-heading p,
+:root[data-theme="dark"] .kitchen-info small,
+:root[data-theme="dark"] .kitchen-order-footer > span,
+:root[data-theme="dark"] .kitchen-empty p { color: var(--app-muted); }
+:root[data-theme="dark"] .kitchen-items { border-color: var(--app-border); }
+:root[data-theme="dark"] .kitchen-status { background: #49371f; color: #ffe0b5; }
+:root[data-theme="dark"] .is-preparing .kitchen-status { background: #263d4c; color: #c6e7fa; }
+:root[data-theme="dark"] .kitchen-item small { background: #49371f; color: #ffe0b5; }
+:root[data-theme="dark"] .admin-tabs a { color: var(--app-text); }
+:root[data-theme="dark"] .admin-list-row { border-color: var(--app-border); }
+:root[data-theme="dark"] .admin-form textarea { background: var(--app-input); color: var(--app-text); border-color: var(--app-border); }
