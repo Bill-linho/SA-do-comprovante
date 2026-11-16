@@ -1,0 +1,247 @@
+:root {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #f5ead7;
+  background: #1b100b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 35px 16px;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(15, 8, 4, 0.88),
+      rgba(48, 25, 12, 0.72),
+      rgba(15, 8, 4, 0.92)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      #27150c 0px,
+      #27150c 65px,
+      #160c07 68px,
+      #3b2112 72px,
+      #211108 135px
+    );
+}
+
+/* Caixa de login e cadastro */
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 38px;
+  background: linear-gradient(
+    145deg,
+    #352014,
+    #21130c 65%,
+    #190e08
+  );
+  border: 1px solid #81582e;
+  border-radius: 12px;
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(231, 190, 123, 0.12);
+}
+
+.auth-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 35px;
+  color: #f4dfb6;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 21px;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.auth-logo {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #c89b52;
+  border-radius: 50%;
+  background: #1a0e08;
+  color: #e8bd70;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 19px;
+  font-weight: 900;
+  box-shadow: 0 0 14px rgba(200, 155, 82, 0.12);
+}
+
+/* Títulos */
+.auth-heading {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.auth-heading h1 {
+  margin: 0 0 12px;
+  color: #f8e8ca;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 29px;
+  font-weight: 700;
+}
+
+.auth-heading p {
+  margin: 0;
+  color: #c4ad91;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Formulários */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form label {
+  margin-bottom: 8px;
+  color: #e5c58e;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.auth-form input {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 14px;
+  border: 1px solid #68472b;
+  border-radius: 6px;
+  outline: none;
+  background: #170d08;
+  color: #fff2df;
+  font-family: inherit;
+  font-size: 14px;
+  transition: 0.25s ease;
+}
+
+.auth-form input::placeholder {
+  color: #8e7863;
+}
+
+.auth-form input:focus {
+  border-color: #d2a254;
+  box-shadow: 0 0 0 3px rgba(210, 162, 84, 0.13);
+}
+
+.auth-form input:focus-visible {
+  outline: 1px solid #d2a254;
+  outline-offset: 1px;
+}
+
+/* Botão principal */
+.auth-button {
+  width: 100%;
+  margin-top: 5px;
+  padding: 15px;
+  border: 1px solid #e0b66d;
+  border-radius: 6px;
+  background: linear-gradient(
+    135deg,
+    #b77a2f,
+    #8c521e
+  );
+  color: #fff8e9;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.auth-button:hover {
+  background: linear-gradient(
+    135deg,
+    #d39a48,
+    #a66a27
+  );
+  box-shadow: 0 5px 18px rgba(191, 127, 44, 0.2);
+  transform: translateY(-1px);
+}
+
+.auth-button:active {
+  transform: translateY(0);
+}
+
+/* Alternar entre login e cadastro */
+.auth-switch {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 26px 0 0;
+  color: #c4ad91;
+  font-size: 13px;
+  text-align: center;
+}
+
+.auth-switch button {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #e8bd70;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.auth-switch button:hover {
+  color: #ffe0a1;
+  text-decoration: underline;
+}
+
+/* Rodapé */
+.auth-footer {
+  margin-top: 29px;
+  padding-top: 19px;
+  border-top: 1px solid #50331f;
+  color: #9e8366;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+  .auth-page {
+    padding: 20px 12px;
+  }
+
+  .auth-card {
+    padding: 28px 22px;
+  }
+
+  .auth-brand {
+    gap: 10px;
+    font-size: 19px;
+  }
+
+  .auth-logo {
+    width: 46px;
+    height: 46px;
+  }
+
+  .auth-heading h1 {
+    font-size: 25px;
+  }
+}
