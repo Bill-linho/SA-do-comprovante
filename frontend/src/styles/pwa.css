@@ -52,3 +52,4 @@
   .install-nav-button { padding: 7px 9px; }
   .notice-toast { bottom: max(14px, env(safe-area-inset-bottom)); }
 }
+.settings-install-card .install-nav-button { justify-self: start; padding: 11px 16px; }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAppearance } from '../contexts/AppearanceContext';
+import InstallPwa from '../components/InstallPwa';
 
 export default function SettingsPage() {
   const { settings, updateSettings, resetSettings } = useAppearance();
@@ -11,6 +12,11 @@ export default function SettingsPage() {
         <h1>Configurações</h1>
         <p className="muted">Personalize a aparência e a leitura do sistema neste dispositivo.</p>
       </div>
+
+      <section className="panel settings-card settings-install-card">
+        <div className="settings-title"><span className="settings-icon" aria-hidden="true">⇩</span><div><h2>Instalar aplicativo</h2><p className="muted">Adicione o restaurante à tela inicial para abrir como um app.</p></div></div>
+        <InstallPwa />
+      </section>
 
       <section className="panel settings-card">
         <div className="settings-title"><span className="settings-icon">◐</span><div><h2>Aparência</h2><p className="muted">Escolha como deseja visualizar o aplicativo.</p></div></div>

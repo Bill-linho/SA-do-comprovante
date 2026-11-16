@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import InstallPwa from './InstallPwa';
 
 export default function Header({ user, onLogout }) {
   return (
@@ -10,7 +9,6 @@ export default function Header({ user, onLogout }) {
         <NavLink to="/cardapio">Cardápio</NavLink>
         <NavLink to="/reservas">Reservas</NavLink>
         <NavLink to="/configuracoes">Configurações</NavLink>
-        <InstallPwa />
         {user && user.role === 'COZINHEIRO' && <NavLink to="/cozinha">Cozinha</NavLink>}
         {user && user.role !== 'COZINHEIRO' && <NavLink to="/pedidos">Pedidos</NavLink>}
         {user && ['ADMIN', 'GERENTE'].includes(user.role) && <NavLink to="/admin/cardapio">Administração</NavLink>}

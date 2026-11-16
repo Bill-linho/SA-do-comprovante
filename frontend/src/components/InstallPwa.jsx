@@ -1,35 +1,50 @@
 import React, { useEffect, useState } from 'react';
 
+let installPrompt = null;
+let appInstalled = false;
+const subscribers = new Set();
+
+function notifySubscribers() {
+  subscribers.forEach(subscriber => subscriber());
+}
+
+if (typeof window !== 'undefined') {
+  window.addEventListener('beforeinstallprompt', event => {
+    event.preventDefault();
+    installPrompt = event;
+    notifySubscribers();
+  });
+  window.addEventListener('appinstalled', () => {
+    appInstalled = true;
+    installPrompt = null;
+    notifySubscribers();
+  });
+}
+
 export default function InstallPwa() {
-  const [installPrompt, setInstallPrompt] = useState(null);
-  const [installed, setInstalled] = useState(false);
+  const [promptAvailable, setPromptAvailable] = useState(Boolean(installPrompt));
+  const [installed, setInstalled] = useState(() => {
+    const standalone = window.matchMedia?.('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    return appInstalled || standalone;
+  });
 
   useEffect(() => {
-    const onBeforeInstall = (event) => {
-      event.preventDefault();
-      setInstallPrompt(event);
+    const syncInstallationState = () => {
+      setPromptAvailable(Boolean(installPrompt));
+      setInstalled(appInstalled);
     };
-    const onInstalled = () => {
-      setInstalled(true);
-      setInstallPrompt(null);
-    };
-
-    window.addEventListener('beforeinstallprompt', onBeforeInstall);
-    window.addEventListener('appinstalled', onInstalled);
-    const standalone = window.matchMedia?.('(display-mode: standalone)').matches || window.navigator.standalone === true;
-    if (standalone) setInstalled(true);
-
-    return () => {
-      window.removeEventListener('beforeinstallprompt', onBeforeInstall);
-      window.removeEventListener('appinstalled', onInstalled);
-    };
+    subscribers.add(syncInstallationState);
+    syncInstallationState();
+    return () => subscribers.delete(syncInstallationState);
   }, []);
 
   async function installApp() {
     if (installPrompt) {
-      installPrompt.prompt();
-      await installPrompt.userChoice;
-      setInstallPrompt(null);
+      const promptEvent = installPrompt;
+      await promptEvent.prompt();
+      await promptEvent.userChoice;
+      installPrompt = null;
+      notifySubscribers();
       return;
     }
     window.alert('Para instalar: no Android, abra o menu do navegador e escolha "Instalar aplicativo". No iPhone, use Safari > Compartilhar > Adicionar à Tela de Início.');
@@ -39,7 +54,7 @@ export default function InstallPwa() {
 
   return (
     <button type="button" className="install-nav-button" onClick={installApp} title="Instalar aplicativo" aria-label="Instalar aplicativo">
-      <span aria-hidden="true">⇩</span> Instalar
+      <span aria-hidden="true">⇩</span> {promptAvailable ? 'Instalar app' : 'Como instalar'}
     </button>
   );
 }
